@@ -1,0 +1,20 @@
+version: "3"
+services:
+  web:
+    image: "httpd:2.4"
+    ports:
+      - "${IP}:80:80"
+    volumes:
+      - "./public/:/usr/local/apache2/htdocs/"
+  db:
+    image: "mysql:5.7"
+    ports:
+      - "${IP}:3306:3306"
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+  secure-db:
+    image: "mysql:5.7"
+    ports:
+      - "${IP}:3307:3306"
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
